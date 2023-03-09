@@ -25,7 +25,6 @@ export class AnimeListPage implements OnInit {
   getTopAnime() {
     this.animeService.getTopAnime().subscribe((res) => {
       this.topAnimes = res.data;
-      console.log(this.topAnimes);
     });
   }
 }

@@ -25,11 +25,11 @@
     </ion-header>
     <ion-content class="ion-no-padding">
       <ion-list>
-        <ion-item *ngFor="let anime of topAnimes">
+        <ion-item *ngFor="let anime of topAnimes" [routerLink]="['/anime-detail/' + anime.mal_id]">
           <ion-card>
             <div class="image">
               <img style="width: 100%; object-fit: cover; object-position: center;"
-                [src]="anime.images['jpg'].image_url" />
+                [src]="anime.images['jpg'].large_image_url" />
             </div>
             <ion-card-header>
               <ion-card-title>{{anime.title}}</ion-card-title>

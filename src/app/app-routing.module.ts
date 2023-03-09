@@ -5,19 +5,33 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'anime-list',
-    pathMatch: 'full'
+    pathMatch: 'full',
+  },
+  {
+    path: 'anime-detail',
+    redirectTo: 'anime-list',
+    pathMatch: 'full',
   },
   {
     path: 'anime-list',
-    loadChildren: () => import('./pages/anime-list/anime-list.module').then( m => m.AnimeListPageModule)
+    loadChildren: () =>
+      import('./pages/anime-list/anime-list.module').then(
+        (m) => m.AnimeListPageModule
+      ),
   },
-  
+  {
+    path: 'anime-detail/:id',
+    loadChildren: () =>
+      import('./pages/anime-detail/anime-detail.module').then(
+        (m) => m.AnimeDetailPageModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Respuesta } from '../interfaces/anime.interface';
+import { FullAnime } from '../interfaces/full-anime.interface';
 
 const WEB_API_URL = environment.host;
 
@@ -19,6 +20,11 @@ export class AnimeListService {
   getTopAnime() {
     return this.http
       .get<Respuesta>(`${WEB_API_URL}top/anime`)
+      .pipe((res) => res);
+  }
+  getAnimeById(id: number) {
+    return this.http
+      .get<{ data: FullAnime }>(`${WEB_API_URL}anime/${id}/full`)
       .pipe((res) => res);
   }
 }
