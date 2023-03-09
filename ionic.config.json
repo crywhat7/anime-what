@@ -1,0 +1,7 @@
+{
+  "name": "AnimeWhat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
