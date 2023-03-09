@@ -1,0 +1,46 @@
+<ion-content>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-icon class="ion-padding-start" slot="start"></ion-icon>
+        <ion-title>Buscar</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item>
+          <ion-label>Por nombre</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Animes Recomendados</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-no-padding">
+      <ion-list>
+        <ion-item *ngFor="let anime of topAnimes">
+          <ion-card>
+            <div class="image">
+              <img style="width: 100%; object-fit: cover; object-position: center;"
+                [src]="anime.images['jpg'].image_url" />
+            </div>
+            <ion-card-header>
+              <ion-card-title>{{anime.title}}</ion-card-title>
+              <ion-card-subtitle>{{anime.title_japanese}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              {{anime.synopsis | slice:0:150}}...
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </div>
+</ion-content>
