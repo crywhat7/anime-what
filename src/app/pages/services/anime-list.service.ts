@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Respuesta } from '../interfaces/anime.interface';
 import { FullAnime } from '../interfaces/full-anime.interface';
+import { Personaje } from '../interfaces/character.interface';
 
 const WEB_API_URL = environment.host;
 
@@ -25,6 +26,11 @@ export class AnimeListService {
   getAnimeById(id: number) {
     return this.http
       .get<{ data: FullAnime }>(`${WEB_API_URL}anime/${id}/full`)
+      .pipe((res) => res);
+  }
+  getCharacters(id: number) {
+    return this.http
+      .get<{ data: Personaje[] }>(`${WEB_API_URL}anime/${id}/characters`)
       .pipe((res) => res);
   }
 }

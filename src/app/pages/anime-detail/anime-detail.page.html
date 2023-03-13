@@ -26,4 +26,22 @@
       </ion-card>
     </ion-card-content>
   </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Personajes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="inset">
+        <ion-item *ngFor="let character of characters">
+          <ion-avatar slot="start">
+            <img [src]="character.character.images.jpg.image_url" />
+          </ion-avatar>
+          <ion-label>
+            <h2>{{character.character.name}}</h2>
+            <p>{{character.role}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

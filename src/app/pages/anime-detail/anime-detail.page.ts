@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Personaje } from '../interfaces/character.interface';
 import { FullAnime } from '../interfaces/full-anime.interface';
 import { AnimeListService } from '../services/anime-list.service';
 
@@ -17,11 +18,13 @@ export class AnimeDetailPage implements OnInit {
   imageUrl: string = '';
   trailerUrl: string = '';
   videoUrl: string = '';
+  characters: Personaje[] = [];
 
   ngOnInit() {
     this.activated.paramMap.subscribe((params) => {
       const id = params.get('id');
       this.getAnimeById(Number(id));
+      this.getCharacters(Number(id));
     });
   }
 
@@ -31,6 +34,11 @@ export class AnimeDetailPage implements OnInit {
       this.imageUrl = this.anime.images.jpg.large_image_url;
       this.trailerUrl = this.anime.trailer.images.maximum_image_url;
       this.videoUrl = this.anime.trailer.url;
+    });
+  }
+  getCharacters(id: number) {
+    this.animeService.getCharacters(id).subscribe((res) => {
+      this.characters = res.data;
     });
   }
 }
