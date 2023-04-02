@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Respuesta } from '../interfaces/anime.interface';
+import { Anime, Respuesta } from '../interfaces/anime.interface';
 import { FullAnime } from '../interfaces/full-anime.interface';
 import { Personaje } from '../interfaces/character.interface';
 
@@ -31,6 +31,11 @@ export class AnimeListService {
   getCharacters(id: number) {
     return this.http
       .get<{ data: Personaje[] }>(`${WEB_API_URL}anime/${id}/characters`)
+      .pipe((res) => res);
+  }
+  getAnimeBySearch(search: string) {
+    return this.http
+      .get<{ data: Anime[] }>(`${WEB_API_URL}anime?q=${search}`)
       .pipe((res) => res);
   }
 }

@@ -1,0 +1,8 @@
+::ng-deep .found-anime-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+::ng-deep .no-founded-text {
+  text-align: center;
+}
